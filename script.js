@@ -1,3 +1,43 @@
+// Theme management
+class ThemeManager {
+    constructor() {
+        this.theme = localStorage.getItem('theme') || 'light';
+        this.init();
+    }
+    
+    init() {
+        this.applyTheme();
+        this.setupToggleButton();
+    }
+    
+    applyTheme() {
+        document.documentElement.setAttribute('data-theme', this.theme);
+        this.updateToggleIcon();
+    }
+    
+    updateToggleIcon() {
+        const themeIcon = document.querySelector('.theme-icon');
+        if (themeIcon) {
+            themeIcon.textContent = this.theme === 'dark' ? '☀️' : '🌙';
+        }
+    }
+    
+    setupToggleButton() {
+        const toggleButton = document.getElementById('themeToggle');
+        if (toggleButton) {
+            toggleButton.addEventListener('click', () => {
+                this.toggleTheme();
+            });
+        }
+    }
+    
+    toggleTheme() {
+        this.theme = this.theme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', this.theme);
+        this.applyTheme();
+    }
+}
+
 // Course timetable renderer according to NTHU specifications
 class TimetableRenderer {
     constructor() {
@@ -224,7 +264,8 @@ class TimetableRenderer {
     }
 }
 
-// Initialize the timetable renderer when the page loads
+// Initialize the timetable renderer and theme manager when the page loads
 document.addEventListener('DOMContentLoaded', () => {
+    new ThemeManager();
     new TimetableRenderer();
 });
