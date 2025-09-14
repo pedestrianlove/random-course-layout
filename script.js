@@ -101,13 +101,18 @@ class TimetableRenderer {
         const schedule = [];
         
         // Use regex to match day+period combinations
-        // Handle both uppercase and lowercase period characters
-        const pattern = /([MTWRFSU])([1-9nNaAbBcCdD])/g;
+        // Handle both uppercase and lowercase period characters, including 'm' as alias for noon
+        const pattern = /([MTWRFSU])([1-9nNmMaAbBcCdD])/g;
         let match;
         
         while ((match = pattern.exec(timeString_upper)) !== null) {
             const day = match[1];
-            const period = match[2].toLowerCase(); // Convert to lowercase for periods
+            let period = match[2].toLowerCase(); // Convert to lowercase for periods
+            
+            // Handle 'm' as an alias for noon period 'n'
+            if (period === 'm') {
+                period = 'n';
+            }
             
             if (this.dayMap[day] && this.periodTimes[period]) {
                 schedule.push({
