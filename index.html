@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Timetable Renderer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="no-print">
+            <h1>Course Timetable Renderer</h1>
+            <p>Enter course information to generate a printable timetable</p>
+        </header>
+        
+        <div class="input-section no-print">
+            <h2>Add Course</h2>
+            <form id="courseForm">
+                <div class="form-group">
+                    <label for="courseName">Course Name:</label>
+                    <input type="text" id="courseName" name="courseName" required 
+                           placeholder="e.g., Calculus I">
+                </div>
+                
+                <div class="form-group">
+                    <label for="courseTime">Course Time:</label>
+                    <input type="text" id="courseTime" name="courseTime" required 
+                           placeholder="e.g., T3T4R3R4 (Tue 3-4, Thu 3-4)"
+                           pattern="[MTWRFSUmtwrfsu1-9nabc]+">
+                </div>
+                
+                <div class="form-group">
+                    <label for="courseLocation">Location (optional):</label>
+                    <input type="text" id="courseLocation" name="courseLocation" 
+                           placeholder="e.g., Room 101">
+                </div>
+                
+                <div class="form-group">
+                    <label for="courseInstructor">Instructor (optional):</label>
+                    <input type="text" id="courseInstructor" name="courseInstructor" 
+                           placeholder="e.g., Prof. Smith">
+                </div>
+                
+                <button type="submit">Add Course</button>
+                <button type="button" id="clearAll">Clear All</button>
+            </form>
+            
+            <div class="format-help">
+                <h3>Time Format Help</h3>
+                <p><strong>Day codes:</strong> M(Mon), T(Tue), W(Wed), R(Thu), F(Fri), S(Sat), U(Sun)</p>
+                <p><strong>Period codes:</strong> 1-9, n(noon), a-d(evening)</p>
+                <p><strong>Example:</strong> T3T4R3R4 = Tuesday 3rd-4th period + Thursday 3rd-4th period</p>
+            </div>
+        </div>
+        
+        <div class="timetable-section">
+            <h2>Weekly Timetable</h2>
+            <div id="timetable" class="timetable-grid">
+                <!-- Timetable will be generated here -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
