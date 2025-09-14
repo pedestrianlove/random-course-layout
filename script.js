@@ -61,7 +61,8 @@ class TimetableRenderer {
         const schedule = [];
         
         // Use regex to match day+period combinations
-        const pattern = /([MTWRFSU])([1-9nabc])/g;
+        // Handle both uppercase and lowercase period characters
+        const pattern = /([MTWRFSU])([1-9nNaAbBcCdD])/g;
         let match;
         
         while ((match = pattern.exec(timeString_upper)) !== null) {
