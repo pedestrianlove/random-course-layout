@@ -1,0 +1,17 @@
+{
+  "name": "random-course-layout",
+  "version": "1.0.0",
+  "description": "Course timetable renderer for NTHU course format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "npx http-server .",
+    "build": "echo \"Build process would go here\""
+  },
+  "keywords": ["course", "timetable", "nthu", "schedule"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
